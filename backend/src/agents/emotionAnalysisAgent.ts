@@ -9,8 +9,9 @@ export class EmotionAnalysisAgent {
   private model: any;
 
   constructor() {
+    console.log('Initializing Gemini API with key:', process.env.GEMINI_API_KEY ? 'Present' : 'Missing');
     this.genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
-    this.model = this.genAI.getGenerativeModel({ model: 'gemini-pro' });
+    this.model = this.genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
   }
 
   async analyzeEmotion(text: string): Promise<EmotionAnalysis> {
@@ -39,13 +40,18 @@ Text to analyze: "${text}"
 Return only the JSON, no other text.`;
 
     try {
+      console.log('Calling Gemini API with prompt length:', prompt.length);
       const result = await this.model.generateContent(prompt);
       const response = await result.response;
       const content = response.text();
       
+      console.log('Gemini API response:', content);
+      
       if (!content) throw new Error('No response from Gemini');
 
       const analysis = JSON.parse(content);
+      
+      console.log('Parsed analysis:', analysis);
       
       return {
         primaryEmotion: analysis.primaryEmotion,
@@ -56,6 +62,7 @@ Return only the JSON, no other text.`;
       };
     } catch (error) {
       console.error('Emotion analysis error:', error);
+      console.error('Error details:', error.message);
       
       // Fallback analysis
       return {

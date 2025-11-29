@@ -8,6 +8,11 @@ export class EarthDataAgent {
     this.earthDataService = new EarthDataService();
   }
 
+  async getEarthData(latitude: number, longitude: number): Promise<EarthData> {
+    const earthData = await this.earthDataService.getEarthData(latitude, longitude);
+    return earthData;
+  }
+
   async analyzeEarthData(latitude: number, longitude: number): Promise<{
     earthData: EarthData;
     interpretation: string;

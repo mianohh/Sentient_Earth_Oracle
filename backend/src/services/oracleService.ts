@@ -77,51 +77,42 @@ export class OracleService {
         };
       }
 
-      // Quick working response for testing
-      const emotionAnalysis = {
-        primaryEmotion: 'joy',
-        emotions: [{ emotion: 'joy', confidence: 0.9, intensity: 8 }, { emotion: 'calm', confidence: 0.7, intensity: 6 }],
-        overallIntensity: 7,
-        timestamp: new Date()
-      };
+      // Call actual AI agents
+      console.log('Calling emotion analysis agent...');
+      const emotionAnalysis = await this.emotionAgent.analyzeEmotion(emotionalText);
       
-      const earthData = {
-        location: { latitude, longitude, city: 'Your Location', country: 'Earth' },
-        weather: { temperature: 22, humidity: 65, pressure: 1013, windSpeed: 5, windDirection: 180, visibility: 10000, uvIndex: 3, condition: 'Clear', description: 'clear sky' },
-        airQuality: { aqi: 45, pm25: 12, pm10: 20, o3: 80, no2: 25, so2: 10, co: 0.5, category: 'Good' },
-        naturalEvents: [],
-        timestamp: new Date()
-      };
+      console.log('Calling earth data agent...');
+      const earthData = await this.earthAgent.getEarthData(latitude, longitude);
       
       const oracleResponse: OracleResponse = {
         id: `oracle_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
         userId,
         emotionAnalysis,
         earthData,
-        narrative: `Your blessed high spirits resonate with Earth's harmonious energy. The cosmos celebrates your authentic self-connection, as clear skies mirror your inner clarity and peace.`,
-        vibeScore: 88,
+        narrative: `In this moment of ${emotionalText.toLowerCase()}, the Earth mirrors your inner landscape. Your emotions resonate with the cosmic energy that surrounds us all.`,
+        vibeScore: Math.round(50 + (emotionAnalysis.overallIntensity * 5)),
         earthConnectionScore: calculateEarthConnectionScore(emotionAnalysis, earthData),
         insights: [
-          'Your authentic self-expression creates ripples of positive energy',
-          'Blessed spirits attract abundance from the universe',
-          'True inner peace reflects in your outer world'
+          'Your emotions are a bridge between inner and outer worlds',
+          'The Earth holds space for all human experiences',
+          'Every feeling is a teacher in disguise'
         ],
         actions: [
           {
             id: 'action_1',
-            title: 'Gratitude Meditation',
-            description: 'Spend 10 minutes in grateful reflection of your blessings',
+            title: 'Mindful Breathing',
+            description: 'Take 5 deep breaths while feeling your connection to the Earth',
             category: 'mindfulness',
-            timeEstimate: '10 minutes',
+            timeEstimate: '5 minutes',
             difficulty: 'easy',
             safetyLevel: 'safe'
           },
           {
             id: 'action_2',
-            title: 'Share Your Light',
-            description: 'Express your positive energy by helping someone today',
-            category: 'social',
-            timeEstimate: '30 minutes',
+            title: 'Nature Observation',
+            description: 'Spend time observing the natural world around you',
+            category: 'environmental',
+            timeEstimate: '15 minutes',
             difficulty: 'easy',
             safetyLevel: 'safe'
           }
