@@ -1,0 +1,39 @@
+{
+  "name": "sentient-earth-oracle",
+  "version": "1.0.0",
+  "description": "AI-powered platform connecting human emotions with Earth data",
+  "main": "index.js",
+  "scripts": {
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "dev:frontend": "cd frontend && npm start",
+    "dev:backend": "cd backend && npm run dev",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "start": "cd backend && npm start",
+    "test:all": "npm run test:backend && npm run test:frontend",
+    "test:backend": "cd backend && npm test",
+    "test:frontend": "cd frontend && npm test",
+    "db:migrate": "cd backend && npm run db:migrate",
+    "db:seed": "cd backend && npm run db:seed"
+  },
+  "keywords": [
+    "ai",
+    "emotions",
+    "earth-data",
+    "oracle",
+    "hackathon",
+    "aws",
+    "multi-agent",
+    "gemini"
+  ],
+  "author": "Sentient Earth Oracle Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mianohh/Sentient_Earth_Oracle.git"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}

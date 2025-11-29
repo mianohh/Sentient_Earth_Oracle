@@ -1,0 +1,138 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <radialGradient id="earthGradient" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#4ade80;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#064e3b;stop-opacity:1" />
+    </radialGradient>
+    
+    <radialGradient id="oceanGradient" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#1e3a8a;stop-opacity:1" />
+    </radialGradient>
+    
+    <radialGradient id="eyeGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#f59e0b;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#92400e;stop-opacity:0.6" />
+    </radialGradient>
+    
+    <radialGradient id="glowGradient" cx="50%" cy="50%" r="80%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.3" />
+      <stop offset="50%" style="stop-color:#fbbf24;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#1e3a8a;stop-opacity:0.1" />
+    </radialGradient>
+    
+    <!-- Filters -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <filter id="innerGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#glowGradient)" opacity="0.3"/>
+  
+  <!-- Outer Ring -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="url(#eyeGradient)" stroke-width="2" opacity="0.6" filter="url(#glow)"/>
+  
+  <!-- Neural Network Pattern -->
+  <g opacity="0.4" filter="url(#innerGlow)">
+    <!-- Connection Lines -->
+    <path d="M 150 200 Q 200 180 250 200 T 350 220" fill="none" stroke="#4ade80" stroke-width="1.5" opacity="0.6"/>
+    <path d="M 180 300 Q 220 280 260 300 T 340 320" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.6"/>
+    <path d="M 160 350 Q 210 330 256 350 T 360 370" fill="none" stroke="#fbbf24" stroke-width="1.5" opacity="0.5"/>
+    
+    <!-- Neural Nodes -->
+    <circle cx="150" cy="200" r="3" fill="#4ade80" opacity="0.8"/>
+    <circle cx="250" cy="200" r="3" fill="#4ade80" opacity="0.8"/>
+    <circle cx="350" cy="220" r="3" fill="#4ade80" opacity="0.8"/>
+    <circle cx="180" cy="300" r="3" fill="#3b82f6" opacity="0.8"/>
+    <circle cx="260" cy="300" r="3" fill="#3b82f6" opacity="0.8"/>
+    <circle cx="340" cy="320" r="3" fill="#3b82f6" opacity="0.8"/>
+  </g>
+  
+  <!-- Earth Base -->
+  <circle cx="256" cy="256" r="120" fill="url(#oceanGradient)" filter="url(#glow)"/>
+  
+  <!-- Continents -->
+  <g fill="url(#earthGradient)" opacity="0.9">
+    <!-- North America -->
+    <path d="M 180 200 Q 200 180 230 190 Q 250 200 240 220 Q 220 240 190 230 Q 170 220 180 200 Z"/>
+    
+    <!-- Europe/Africa -->
+    <path d="M 260 180 Q 280 170 300 180 Q 310 200 300 220 Q 290 240 270 235 Q 250 230 260 180 Z"/>
+    
+    <!-- Asia -->
+    <path d="M 300 200 Q 330 190 350 210 Q 360 230 340 250 Q 320 260 310 240 Q 300 220 300 200 Z"/>
+    
+    <!-- South America -->
+    <path d="M 200 280 Q 220 270 230 290 Q 235 310 220 320 Q 200 325 190 310 Q 185 290 200 280 Z"/>
+    
+    <!-- Australia -->
+    <path d="M 320 300 Q 340 295 350 305 Q 355 315 345 320 Q 330 322 320 315 Q 315 305 320 300 Z"/>
+  </g>
+  
+  <!-- Oracle Eye -->
+  <g filter="url(#glow)">
+    <!-- Eye Outer -->
+    <ellipse cx="256" cy="240" rx="45" ry="25" fill="url(#eyeGradient)" opacity="0.9"/>
+    
+    <!-- Eye Inner -->
+    <ellipse cx="256" cy="240" rx="25" ry="15" fill="#1e3a8a" opacity="0.8"/>
+    
+    <!-- Pupil -->
+    <circle cx="256" cy="240" r="8" fill="#000000"/>
+    
+    <!-- Eye Highlight -->
+    <ellipse cx="250" cy="235" rx="3" ry="2" fill="#ffffff" opacity="0.9"/>
+  </g>
+  
+  <!-- Mystical Particles -->
+  <g opacity="0.7">
+    <circle cx="180" cy="150" r="2" fill="#fbbf24" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="350" cy="180" r="1.5" fill="#4ade80" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="160" cy="380" r="2.5" fill="#3b82f6" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="380" cy="350" r="1.8" fill="#fbbf24" filter="url(#glow)">
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Energy Waves -->
+  <g opacity="0.3" fill="none" stroke="#fbbf24" stroke-width="1">
+    <circle cx="256" cy="256" r="160" opacity="0.4">
+      <animate attributeName="r" values="160;180;160" dur="6s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.1;0.4" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="256" cy="256" r="180" opacity="0.2">
+      <animate attributeName="r" values="180;200;180" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;0.05;0.2" dur="8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Circuit Patterns -->
+  <g opacity="0.3" fill="none" stroke="#4ade80" stroke-width="1">
+    <path d="M 100 256 L 130 256 L 140 246 L 150 256 L 180 256"/>
+    <path d="M 332 256 L 362 256 L 372 246 L 382 256 L 412 256"/>
+    <path d="M 256 100 L 256 130 L 246 140 L 256 150 L 256 180"/>
+    <path d="M 256 332 L 256 362 L 246 372 L 256 382 L 256 412"/>
+  </g>
+</svg>
